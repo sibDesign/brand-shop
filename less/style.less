@@ -13,37 +13,60 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 /* =============================================  миксины  */
-.font-light {font-weight: 300;}
-.font-regular {font-weight: 400;}
-.font-bold {font-weight: 700;}
-.font-black {font-weight: 900;}
+.font-light {
+  font-weight: 300;
+}
+
+.font-regular {
+  font-weight: 400;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-black {
+  font-weight: 900;
+}
 
 .flex-sb-c {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .flex-center {
   display: flex;
   align-items: center;
 }
+
 .cf:after {
   content: "";
   display: table;
   clear: both;
 }
+
 .container {
   width: 1200px;
   margin: 0 auto;
   padding: 0 30px;
 }
+
 .btn {
   background-color: @color_pink;
   color: @color_white;
   outline: none;
   border: none;
+  &:hover {
+    background-color: @color_white;
+    border: 2px solid @color_pink;
+    color: @color_pink;
+    cursor: pointer;
+  }
 }
+
 /* =============================================  блок header  */
 .header {
   height: 100px;
@@ -58,6 +81,7 @@
     .flex-center;
   }
 }
+
 /* =============================================  логотип  */
 .logo {
   .flex-center;
@@ -75,6 +99,7 @@
     }
   }
 }
+
 .browse {
   .flex-center;
   button {
@@ -123,7 +148,6 @@
   &-content {
     display: none;
     position: absolute;
-    width: 262px;
     padding: 15px;
     border-radius: 5px;
     background-color: @color_white;
@@ -132,22 +156,10 @@
     z-index: 1;
   }
 }
-/* =============================================  выпадающее меню Browse  */
-.browse-list {
-  top: 43px;
-  left: -10px;
-  &::before, &::after {
-    content: '';
-    position: absolute;
-    left: 68px; top: -20px;
-    border: 10px solid transparent;
-    border-bottom: 10px solid @color_grey_dark;
-  }
-  &::after {
-    border-bottom: 10px solid @color_white;
-    top: -19px;
-  }
-  .title {
+
+/* =============================================  стили для списков выпадающего меню  */
+.list-dropdown {
+  .title-dropdown {
     color: @color_dark;
     font-size: 14px;
     .font-regular;
@@ -160,29 +172,74 @@
       padding-top: 0;
     }
   }
+  .super-sale {
+    padding-top: 15px;
+    p {
+      display: block;
+      width: 100px;
+      position: absolute;
+      bottom: 25px;
+      right: 0;
+      color: @color_white;
+      font-size: 22px;
+      .font-bold;
+      line-height: 28px;
+      text-transform: uppercase;
+      letter-spacing: 0.55px;
+
+    }
+  }
   ul {
-    li{
+    li {
+      display: block;
       list-style: none;
-      padding-left: 15px;
-      a{
+      padding: 0 0 0 15px;
+      &:hover {
+        border-bottom: none;
+      }
+      a {
         text-decoration: none;
+        text-transform: none;
         color: @color_dark;
         font-size: 14px;
         .font-regular;
         line-height: 28px;
         letter-spacing: 0.35px;
+        padding: 0;
       }
     }
   }
 }
+
+/* =============================================  выпадающее меню Browse  */
+.browse-list {
+  top: 43px;
+  left: -10px;
+  width: 265px;
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    left: 68px;
+    top: -20px;
+    border: 10px solid transparent;
+    border-bottom: 10px solid @color_grey_dark;
+  }
+  &::after {
+    border-bottom: 10px solid @color_white;
+    top: -19px;
+  }
+}
+
 /* =============================================  выпадающее меню Корзины  */
 .cart {
   top: 40px;
   left: -60px;
+  width: 262px;
   &::before, &::after {
     content: '';
     position: absolute;
-    left: 68px; top: -20px;
+    left: 68px;
+    top: -20px;
     border: 10px solid transparent;
     border-bottom: 10px solid @color_grey_dark;
   }
@@ -254,6 +311,7 @@
     }
   }
 }
+
 .my_acc {
   width: 130px;
   height: 38px;
@@ -265,6 +323,7 @@
     margin-left: 10px;
   }
 }
+
 /* =============================================  Главное меню  */
 nav {
   position: absolute;
@@ -295,9 +354,33 @@ nav {
       .active_link {
         border-bottom: 3px solid @color_pink;
       }
+      .mega-menu {
+        width: 800px;
+        top: 37px;
+        left: 10px;
+        &::before, &::after {
+          content: '';
+          position: absolute;
+          left: 40px;
+          top: -20px;
+          border: 10px solid transparent;
+          border-bottom: 10px solid @color_grey_dark;
+        }
+        &::after {
+          border-bottom: 10px solid @color_white;
+          top: -19px;
+        }
+        .mega-menu-row {
+          display: inline-block;
+          width: 255px;
+          float: left;
+          padding-right: 15px;
+        }
+      }
     }
   }
 }
+
 /* =============================================  Slider  */
 .slider {
   display: block;
@@ -364,15 +447,297 @@ nav {
   }
 }
 
+/* =============================================  Product (v.1.0)  */
+.product {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  a {
+    text-decoration: none;
+  }
+  &-title {
+    display: block;
+    text-align: center;
+    width: 100%;
+    color: #222222;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0.75px;
+  }
+  &-desc {
+    display: block;
+    text-align: center;
+    width: 100%;
+    line-height: 54px;
+    color: #9f9f9f;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.35px;
+  }
+  &-box {
+    margin-top: 36px;
+    background-color: #ffffff;
+    position: relative;
+    z-index: 1;
+    &:hover {
+      box-shadow: 0 5px 8px rgba(0, 0, 0, 0.16);
+    }
+    &:hover:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 283px;
+      background: #3a3838;
+      opacity: 0.8;
+      z-index: 2;
+    }
+    img {
+      width: 264px;
+      height: 283px;
+    }
+    .basket {
+      width: 27px;
+      height: 25px;
+      position: relative;
+      top: 5px;
+      left: -5px;
+    }
+    button {
+      display: none;
+      width: 126px;
+      height: 42px;
+      border: 1px solid #fff;
+      background: none;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 42px;
+      cursor: pointer;
+    }
+    &:hover button {
+      display: block;
+      position: absolute;
+      top: 100px;
+      left: 70px;
+      z-index: 3;
+    }
+    &-name {
+      margin-left: 17px;
+      line-height: 40px;
+      color: #222222;
+      font-size: 13px;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+    &-price {
+      line-height: 40px;
+      margin-left: 17px;
+      color: #f16d7f;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+}
 
+/* =============================================  Кнопка Browse all products (v.1.0)  */
+.browse-products {
+  margin: 50px auto 100px;
+  text-align: center;
+  width: 215px;
+  height: 51px;
+  background-color: #f16d7f;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 51px;
+  letter-spacing: 0.4px;
+  outline: none;
+  border: 2px solid #fff;
+  i {
+    margin: 5px;
+  }
+}
 
-/* =============================================  Футер (старый)  */
+/* =============================================  Feature (v.1.0)  */
+.feature {
+  display: flex;
+  &-title {
+    display: block;
+    width: 767px;
+    height: 529px;
+    background: @color_dark url(../img/feature/feature.jpg) 0 0 no-repeat;
+    h2 {
+      position: relative;
+      top: 146px;
+      left: 39px;
+      width: 60%;
+      color: @color_white;
+      font-size: 54px;
+      .font-bold;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      .offer {
+        color: @color_pink;
+      }
+      .forwomen {
+        display: block;
+        font-size: 32px;
+        letter-spacing: 0.9px;
+      }
+    }
+  }
+  &-sidebox {
+    display: block;
+    float: left;
+    width: 370px;
+    padding: 10px 30px 0 111px;
+    background-color: @color_dark;
+    color: @color_white;
+    ul {
+      list-style: none;
+      li {
+        margin-bottom: 10px;
+        img {
+          position: relative;
+          top: 35px;
+          left: -78px;
+        }
+        h3 {
+          color: @color_white;
+          font-size: 20px;
+          .font-bold;
+          letter-spacing: 0.5px;
+          margin-bottom: 15px;
+        }
+        p {
+          color: @color_white;
+          font-size: 14px;
+          .font-light;
+          line-height: 20px;
+          letter-spacing: 0.35px;
+        }
+      }
+    }
+  }
+}
+
+/* =============================================  Subscribe (v.1.0)  */
+.subscribe {
+  background: #f2f2f2 url(../img/subscribe/subscribe-bg.jpg) center center no-repeat;
+  height: 441px;
+  margin: 90px auto;
+  position: relative;
+  z-index: 1;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: @color_grey_light;
+    opacity: 0.5;
+    z-index: -1;
+  }
+  &-block {
+    display: flex;
+    &-left {
+      width: 50%;
+      margin-top: 100px;
+      img {
+        display: inline-block;
+        float: left;
+        margin: 0 30px 100px 0;
+      }
+      p {
+        color: @color_dark;
+        font-size: 16px;
+        font-style: italic;
+        line-height: 26px;
+        letter-spacing: 0.4px;
+        margin-right: 70px;
+      }
+      .signature {
+        font-style: normal;
+        color: @color_pink;
+        font-size: 16px;
+        .font-bold;
+        letter-spacing: 0.4px;
+        line-height: 26px;
+        .place {
+          display: block;
+          color: @color_dark;
+          font-size: 12px;
+          .font-light;
+          letter-spacing: 0.3px;
+          line-height: 14px;
+        }
+      }
+    }
+    &-right {
+      width: 50%;
+      height: 441px;
+      text-align: center;
+      border-left: 4px solid @color_white;
+      .box {
+        width: 100%;
+        height: 100%;
+        h4 {
+          margin: 120px 0 33px;
+          color: @color_dark;
+          font-size: 24px;
+          letter-spacing: 0.6px;
+          line-height: 54px;
+          text-transform: uppercase;
+          .small {
+            display: block;
+            font-size: 14px;
+            .font-regular;
+            letter-spacing: 0.35px;
+            line-height: 24px;
+          }
+        }
+        input {
+          width: 282px;
+          height: 49px;
+          border-radius: 23px 0 0 23px;
+          background-color: @color_grey_dark;
+          outline: none;
+          border: none;
+          padding-left: 30px;
+        }
+        button {
+          width: 107px;
+          height: 49px;
+          border-radius: 0 23px 23px 0;
+          background-color: @color_pink;
+          outline: none;
+          border: none;
+          color: @color_white;
+          font-size: 14px;
+          .font-regular;
+          letter-spacing: 0.35px;
+          cursor: pointer;
+          &:hover {
+            background-color: darken(@color_pink, 10%);
+          }
+        }
+      }
+    }
+  }
+}
+
+/* =============================================  Футер (v.1.0)  */
 .flex-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100%;
 }
+
 .flex-box-up {
   display: flex;
   justify-content: space-between;
@@ -380,20 +745,21 @@ nav {
   height: 100%;
   margin: 100px auto;
 }
+
 .footer {
   &-logo {
     a {
-      color: #222222;
+      color: @color_dark;
       font-size: 27px;
-      font-weight: 300;
+      .font-light;
       line-height: 51px;
       text-transform: uppercase;
       letter-spacing: 0.68px;
       text-decoration: none;
     }
     span {
-      color: #f16d7f;
-      font-weight: 400;
+      color: @color_pink;
+      .font-regular;
       letter-spacing: 0.68px;
     }
     img {
@@ -404,18 +770,18 @@ nav {
   }
   &-text {
     width: 427px;
-    color: #898989;
+    color: @color_dark;
     font-size: 14px;
-    font-weight: 300;
+    .font-light;
     line-height: 24px;
     letter-spacing: 0.35px;
     margin-top: 30px;
   }
   &-menu-block {
     h4 {
-      color: #f16d7f;
+      color: @color_pink;
       font-size: 18px;
-      font-weight: 700;
+      .font-bold;
       line-height: 26px;
       text-transform: uppercase;
       letter-spacing: 0.45px;
@@ -423,9 +789,9 @@ nav {
     ul {
       list-style-type: none;
       a {
-        color: #898989;
+        color: @color_dark;
         font-size: 16px;
-        font-weight: 400;
+        .font-regular;
         letter-spacing: 0.4px;
         line-height: 42px;
         text-decoration: none;
@@ -436,9 +802,9 @@ nav {
     height: 81px;
     background-color: #e6e6e6;
     &-text {
-      color: #7a7a7a;
+      color: @color_dark;
       font-size: 16px;
-      font-weight: 400;
+      .font-regular;
       line-height: 42px;
       letter-spacing: 0.4px;
     }
@@ -447,13 +813,13 @@ nav {
         display: inline-block;
         width: 35px;
         height: 35px;
-        background: #fff;
-        color: #b2b2b2;
+        background: @color_white;
+        color: @color_dark;
         line-height: 35px;
         text-align: center;
         &:hover {
-          background-color: #f16d7f;
-          color: #fff;
+          background-color: @color_pink;
+          color: @color_white;
         }
       }
     }
